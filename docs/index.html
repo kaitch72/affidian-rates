@@ -139,6 +139,8 @@
     white-space: nowrap;
   }
 
+  .rate.is-text { font-size: 2rem; }
+
   .message {
     padding: 4rem 2.5rem;
     font-size: 1.9rem;
@@ -261,7 +263,7 @@
       name.appendChild(el("b", null, r.name));
       if (r.detail) name.appendChild(el("small", null, r.detail));
       row.appendChild(name);
-      row.appendChild(el("div", "rate", r.rate));
+      row.appendChild(el("div", /%/.test(r.rate) ? "rate" : "rate is-text", r.rate));
       list.appendChild(row);
     });
 
