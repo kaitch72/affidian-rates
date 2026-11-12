@@ -140,6 +140,15 @@
   }
 
   .rate.is-text { font-size: 2rem; }
+  .rate-note {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.1;
+    color: var(--muted);
+  }
 
   .message {
     padding: 4rem 2.5rem;
@@ -263,7 +272,10 @@
       name.appendChild(el("b", null, r.name));
       if (r.detail) name.appendChild(el("small", null, r.detail));
       row.appendChild(name);
-      row.appendChild(el("div", /%/.test(r.rate) ? "rate" : "rate is-text", r.rate));
+      var rate = el("div", /%/.test(r.rate) ? "rate" : "rate is-text");
+      if (r.rate_note) rate.appendChild(el("small", "rate-note", r.rate_note));
+      rate.appendChild(document.createTextNode(r.rate));
+      row.appendChild(rate);
       list.appendChild(row);
     });
 
