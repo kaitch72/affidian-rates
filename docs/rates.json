@@ -2,7 +2,7 @@
   "source": "https://www.affidiancu.org/resources/tools/rates",
   "effective_text": "Rates effective as of March 1, 2026",
   "effective_date": "2026-03-01",
-  "checked_at": "2026-11-12T21:38:36+00:00",
+  "checked_at": "2026-11-12T21:49:25+00:00",
   "sample": false,
   "categories": {
     "savings": {
@@ -14,31 +14,36 @@
           "name": "Regular Savings",
           "detail": "",
           "rate": "0.05%",
-          "rate_value": 0.05
+          "rate_value": 0.05,
+          "rate_note": ""
         },
         {
           "name": "Christmas Club Account",
           "detail": "",
           "rate": "0.05%",
-          "rate_value": 0.05
+          "rate_value": 0.05,
+          "rate_note": ""
         },
         {
           "name": "Business Savings",
           "detail": "",
           "rate": "0.05%",
-          "rate_value": 0.05
+          "rate_value": 0.05,
+          "rate_note": ""
         },
         {
           "name": "Small Business Savings",
           "detail": "",
           "rate": "0.05%",
-          "rate_value": 0.05
+          "rate_value": 0.05,
+          "rate_note": ""
         },
         {
           "name": "IRA Savings",
           "detail": "",
           "rate": "0.10%",
-          "rate_value": 0.1
+          "rate_value": 0.1,
+          "rate_note": ""
         }
       ]
     },
@@ -48,40 +53,39 @@
       "note": "",
       "rows": [
         {
-          "name": "High-Yield Checking",
-          "detail": "On balances up to $10,000.00",
+          "name": "On balances up to $10,000.00",
+          "detail": "",
           "rate": "2.50%",
-          "rate_value": 2.5
+          "rate_value": 2.5,
+          "rate_note": ""
         },
         {
-          "name": "High-Yield Checking",
-          "detail": "On portion of balance over $10,000.00",
+          "name": "On portion of balance over $10,000.00",
+          "detail": "",
           "rate": "2.50%",
-          "rate_value": 2.5
+          "rate_value": 2.5,
+          "rate_note": ""
         },
         {
-          "name": "High-Yield Checking",
-          "detail": "When qualifications are not met",
+          "name": "When qualifications are not met",
+          "detail": "",
           "rate": "0.05%",
-          "rate_value": 0.05
+          "rate_value": 0.05,
+          "rate_note": ""
         },
         {
-          "name": "High-Yield Checking Tier II",
-          "detail": "On balances up to $10,000.00",
+          "name": "On balances up to $10,000.00",
+          "detail": "",
           "rate": "4.00%",
-          "rate_value": 4.0
+          "rate_value": 4.0,
+          "rate_note": ""
         },
         {
-          "name": "High-Yield Checking Tier II",
-          "detail": "On portion of balance over $10,000.00",
+          "name": "On portion of balance over $10,000.00",
+          "detail": "",
           "rate": "4.00%",
-          "rate_value": 4.0
-        },
-        {
-          "name": "High-Yield Checking Tier II",
-          "detail": "When qualifications are not met",
-          "rate": "0.05%",
-          "rate_value": 0.05
+          "rate_value": 4.0,
+          "rate_note": ""
         }
       ]
     },
@@ -94,25 +98,29 @@
           "name": "Money Market 1st tier",
           "detail": "",
           "rate": "1.50%",
-          "rate_value": 1.5
+          "rate_value": 1.5,
+          "rate_note": ""
         },
         {
           "name": "Money Market 2nd tier",
           "detail": "",
           "rate": "1.75%",
-          "rate_value": 1.75
+          "rate_value": 1.75,
+          "rate_note": ""
         },
         {
           "name": "Money Market 3rd tier",
           "detail": "",
           "rate": "2.00%",
-          "rate_value": 2.0
+          "rate_value": 2.0,
+          "rate_note": ""
         },
         {
           "name": "Money Market 4th tier",
           "detail": "",
           "rate": "2.25%",
-          "rate_value": 2.25
+          "rate_value": 2.25,
+          "rate_note": ""
         }
       ]
     },
@@ -125,61 +133,71 @@
           "name": "6 Month Share Certificate & IRA (add-on feature)",
           "detail": "",
           "rate": "3.50%",
-          "rate_value": 3.5
+          "rate_value": 3.5,
+          "rate_note": ""
         },
         {
           "name": "12 Month Share Certificate & IRA (add-on feature)",
           "detail": "",
           "rate": "3.40%",
-          "rate_value": 3.4
+          "rate_value": 3.4,
+          "rate_note": ""
         },
         {
           "name": "18 Month Share Certificate & IRA",
           "detail": "",
           "rate": "3.15%",
-          "rate_value": 3.15
+          "rate_value": 3.15,
+          "rate_note": ""
         },
         {
           "name": "Kids Piggy Bank CD (1 year add-on)",
           "detail": "",
           "rate": "3.50%",
-          "rate_value": 3.5
+          "rate_value": 3.5,
+          "rate_note": ""
         },
         {
           "name": "2 Year Share Certificate & IRA",
           "detail": "",
           "rate": "3.20%",
-          "rate_value": 3.2
+          "rate_value": 3.2,
+          "rate_note": ""
         },
         {
           "name": "3 Year Share Certificate & IRA",
           "detail": "",
           "rate": "3.15%",
-          "rate_value": 3.15
+          "rate_value": 3.15,
+          "rate_note": ""
         },
         {
           "name": "4 Year Share Certificate & IRA",
           "detail": "",
           "rate": "3.35%",
-          "rate_value": 3.35
+          "rate_value": 3.35,
+          "rate_note": ""
         },
         {
           "name": "5 Year Share Certificate & IRA",
           "detail": "",
           "rate": "3.45%",
-          "rate_value": 3.45
+          "rate_value": 3.45,
+          "rate_note": ""
         },
         {
           "name": "5 Month Promo Certificate (add-on feature)",
           "detail": "",
           "rate": "3.80%",
-          "rate_value": 3.8
+          "rate_value": 3.8,
+          "rate_note": ""
         },
         {
           "name": "9 Month Liberty CD (NEW MONEY)",
           "detail": "",
           "rate": "4.25%",
-          "rate_value": 4.25
+          "rate_value": 4.25,
+          "rate_note": ""
         }
       ]
     },
@@ -192,25 +210,29 @@
           "name": "Classic Visa Card",
           "detail": "",
           "rate": "18.00%",
-          "rate_value": 18.0
+          "rate_value": 18.0,
+          "rate_note": "as low as"
         },
         {
           "name": "Visa Signature Card",
           "detail": "",
           "rate": "9%",
-          "rate_value": 9.0
+          "rate_value": 9.0,
+          "rate_note": "as low as"
         },
         {
           "name": "Visa Platinum",
           "detail": "",
           "rate": "3.50%",
-          "rate_value": 3.5
+          "rate_value": 3.5,
+          "rate_note": "as low as"
         },
         {
           "name": "Visa Quantum Signature",
           "detail": "",
           "rate": "8%",
-          "rate_value": 8.0
+          "rate_value": 8.0,
+          "rate_note": "as low as"
         }
       ]
     },
@@ -223,7 +245,8 @@
           "name": "Signature Loans",
           "detail": "",
           "rate": "11.25%",
-          "rate_value": 11.25
+          "rate_value": 11.25,
+          "rate_note": "as low as"
         },
         {
           "name": "Student Loans",
@@ -239,16 +262,24 @@
       "note": "",
       "rows": [
         {
+          "name": "1st Mortgages Loans",
+          "detail": "",
+          "rate": "Ask us",
+          "rate_value": null
+        },
+        {
           "name": "Home Equity Line of Credit",
           "detail": "",
           "rate": "5.75%",
-          "rate_value": 5.75
+          "rate_value": 5.75,
+          "rate_note": "as low as"
         },
         {
           "name": "2nd Mortgages Loans",
           "detail": "",
           "rate": "8.25%",
-          "rate_value": 8.25
+          "rate_value": 8.25,
+          "rate_note": "as low as"
         }
       ]
     },
@@ -261,37 +292,43 @@
           "name": "Auto Loans (2023 – 2027)",
           "detail": "",
           "rate": "4.50%",
-          "rate_value": 4.5
+          "rate_value": 4.5,
+          "rate_note": "as low as"
         },
         {
           "name": "Auto Loans (2022 and older)",
           "detail": "",
           "rate": "5.00%",
-          "rate_value": 5.0
+          "rate_value": 5.0,
+          "rate_note": "as low as"
         },
         {
           "name": "Boats, Off-Road, Jet Skis, ATV, Snowmobiles Loans",
           "detail": "",
           "rate": "9.00%",
-          "rate_value": 9.0
+          "rate_value": 9.0,
+          "rate_note": "as low as"
         },
         {
           "name": "Motorcycle Loans (2023 - 2027)",
           "detail": "",
           "rate": "5.99%",
-          "rate_value": 5.99
+          "rate_value": 5.99,
+          "rate_note": "as low as"
         },
         {
           "name": "Motorcycle Loans (2022 and older)",
           "detail": "",
           "rate": "5.99%",
-          "rate_value": 5.99
+          "rate_value": 5.99,
+          "rate_note": "as low as"
         },
         {
           "name": "Recreation Vehicles Loans",
           "detail": "",
           "rate": "6.25%",
-          "rate_value": 6.25
+          "rate_value": 6.25,
+          "rate_note": "as low as"
         }
       ]
     }
