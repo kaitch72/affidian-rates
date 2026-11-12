@@ -188,17 +188,22 @@ def build_category(key, cat, tables):
                     "detail": detail,
                     "rate": rate_text,
                     "rate_value": float(m.group(1)),
+                    "rate_note": cat.get("rate_note", ""),
                 })
     for extra in cat.get("extra_rows", []):
         pat = rx(extra.get("only_if_missing"))
         if pat and any(pat.search(r["name"]) or pat.search(r["detail"]) for r in rows):
             continue
-        rows.append({
+        new_row = {
             "name": extra["name"],
             "detail": extra.get("detail", ""),
             "rate": extra["rate"],
             "rate_value": None,
-        })
+        }
+        if extra.get("position") == "start":
+            rows.insert(0, new_row)
+        else:
+            rows.append(new_row)
     return {
         "title": cat["title"],
         "rate_label": cat.get("rate_label", "Rate"),

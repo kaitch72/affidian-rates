@@ -1,5 +1,5 @@
 {
-  "_help": "Each category matches one tile and one URL hash (index.html#savings). 'sources' pick rows from the tables on the Affidian rates page. 'section' matches the heading above a table, 'include' matches the first column of a row, 'exclude' removes rows. All matching ignores upper/lower case. 'title' replaces the row name and moves the original text to a smaller second line (handy for balance tiers). 'rate_header' picks which column holds the rate. 'detail_columns' adds other columns (like a term) to the second line. 'extra_rows' add rows typed in by hand, for products the page links out for instead of listing a rate; 'only_if_missing' skips the hand-typed row if the page ever lists that product with a real rate. After editing this file, run the workflow by hand and check the log.",
+  "_help": "Each category matches one tile and one URL hash (index.html#savings). 'sources' pick rows from the tables on the Affidian rates page. 'section' matches the heading above a table, 'include' matches the first column of a row, 'exclude' removes rows. All matching ignores upper/lower case. 'title' replaces the row name and moves the original text to a smaller second line (handy for balance tiers). 'rate_header' picks which column holds the rate. 'detail_columns' adds other columns (like a term) to the second line. 'extra_rows' add rows typed in by hand, for products the page links out for instead of listing a rate; 'position': 'start' puts the row at the top instead of the bottom; 'only_if_missing' skips the hand-typed row if the page ever lists that product with a real rate. 'rate_note' puts small gray text above each rate in that category (like \"as low as\"); delete the line to remove it. After editing this file, run the workflow by hand and check the log.",
 
   "source_url": "https://www.affidiancu.org/resources/tools/rates",
   "max_rate_percent": 30,
@@ -26,8 +26,8 @@
       "rate_header": "APY",
       "required": true,
       "sources": [
-        { "section": "high-yield checking$|high yield checking$", "include": ".", "title": "High-Yield Checking" },
-        { "section": "tier ii|tier 2", "include": ".", "title": "High-Yield Checking Tier II" },
+        { "section": "high-yield checking$|high yield checking$", "include": "." },
+        { "section": "tier ii|tier 2", "include": "." },
         { "section": "other accounts", "include": "checking", "exclude": "high.yield" }
       ]
     },
@@ -53,6 +53,7 @@
     },
 
     "credit-cards": {
+      "rate_note": "as low as",
       "title": "Credit Cards",
       "rate_label": "APR",
       "rate_header": "APR",
@@ -63,6 +64,7 @@
     },
 
     "personal-loans": {
+      "rate_note": "as low as",
       "title": "Personal Loans",
       "rate_label": "APR",
       "rate_header": "APR",
@@ -72,11 +74,12 @@
         { "section": "loans", "include": "signature|personal|share secured|certificate secured|line of credit|student", "exclude": "visa|card|home equity|heloc" }
       ],
       "extra_rows": [
-        { "name": "Student Loans", "rate": "Ask us", "only_if_missing": "student" }
+        { "name": "Student Loans", "rate": "Ask us", "only_if_missing": "student loan" }
       ]
     },
 
     "home-loans": {
+      "rate_note": "as low as",
       "title": "Home Loans",
       "rate_label": "APR",
       "rate_header": "APR",
@@ -86,11 +89,12 @@
         { "section": "loans", "include": "heloc|home equity|mortgage", "exclude": "visa|card" }
       ],
       "extra_rows": [
-        { "name": "1st Mortgage", "rate": "Ask us", "only_if_missing": "mortgage" }
+        { "name": "1st Mortgages Loans", "rate": "Ask us", "only_if_missing": "1st mortgage", "position": "start" }
       ]
     },
 
     "vehicle-loans": {
+      "rate_note": "as low as",
       "title": "Vehicle Loans",
       "rate_label": "APR",
       "rate_header": "APR",
