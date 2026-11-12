@@ -1,5 +1,5 @@
 {
-  "_help": "Each category matches one tile and one URL hash (index.html#savings). 'sources' pick rows from the tables on the Affidian rates page. 'section' matches the heading above a table, 'include' matches the first column of a row, 'exclude' removes rows. All matching ignores upper/lower case. 'title' replaces the row name and moves the original text to a smaller second line (handy for balance tiers). 'rate_header' picks which column holds the rate. 'detail_columns' adds other columns (like a term) to the second line. After editing this file, run the workflow by hand and check the log.",
+  "_help": "Each category matches one tile and one URL hash (index.html#savings). 'sources' pick rows from the tables on the Affidian rates page. 'section' matches the heading above a table, 'include' matches the first column of a row, 'exclude' removes rows. All matching ignores upper/lower case. 'title' replaces the row name and moves the original text to a smaller second line (handy for balance tiers). 'rate_header' picks which column holds the rate. 'detail_columns' adds other columns (like a term) to the second line. 'extra_rows' add rows typed in by hand, for products the page links out for instead of listing a rate; 'only_if_missing' skips the hand-typed row if the page ever lists that product with a real rate. After editing this file, run the workflow by hand and check the log.",
 
   "source_url": "https://www.affidiancu.org/resources/tools/rates",
   "max_rate_percent": 30,
@@ -69,7 +69,10 @@
       "detail_columns": "term",
       "required": true,
       "sources": [
-        { "section": "loans", "include": "signature|personal|share secured|certificate secured|line of credit", "exclude": "home equity|heloc" }
+        { "section": "loans", "include": "signature|personal|share secured|certificate secured|line of credit|student", "exclude": "visa|card|home equity|heloc" }
+      ],
+      "extra_rows": [
+        { "name": "Student Loans", "rate": "Ask us", "only_if_missing": "student" }
       ]
     },
 
@@ -80,7 +83,10 @@
       "detail_columns": "term",
       "required": true,
       "sources": [
-        { "section": "loans", "include": "heloc|home equity|mortgage" }
+        { "section": "loans", "include": "heloc|home equity|mortgage", "exclude": "visa|card" }
+      ],
+      "extra_rows": [
+        { "name": "1st Mortgage", "rate": "Ask us", "only_if_missing": "mortgage" }
       ]
     },
 
@@ -91,7 +97,7 @@
       "detail_columns": "term",
       "required": true,
       "sources": [
-        { "section": "loans", "include": "auto|vehicle|car|truck|motorcycle|\\brv\\b|boat|recreational" }
+        { "section": "loans", "include": "auto|vehicle|\\bcars?\\b|truck|motorcycle|\\brv\\b|boat|recreational", "exclude": "visa|card|credit" }
       ]
     }
   }
