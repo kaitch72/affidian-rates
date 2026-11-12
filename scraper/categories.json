@@ -1,0 +1,98 @@
+{
+  "_help": "Each category matches one tile and one URL hash (index.html#savings). 'sources' pick rows from the tables on the Affidian rates page. 'section' matches the heading above a table, 'include' matches the first column of a row, 'exclude' removes rows. All matching ignores upper/lower case. 'title' replaces the row name and moves the original text to a smaller second line (handy for balance tiers). 'rate_header' picks which column holds the rate. 'detail_columns' adds other columns (like a term) to the second line. After editing this file, run the workflow by hand and check the log.",
+
+  "source_url": "https://www.affidiancu.org/resources/tools/rates",
+  "max_rate_percent": 30,
+
+  "categories": {
+    "savings": {
+      "title": "Savings Accounts",
+      "rate_label": "APY",
+      "rate_header": "APY",
+      "note": "Minimum balance $100 to pay dividends.",
+      "required": true,
+      "sources": [
+        {
+          "section": "other accounts",
+          "include": "savings|christmas|holiday|club|ira",
+          "exclude": "money market|certificate|checking"
+        }
+      ]
+    },
+
+    "checking": {
+      "title": "Checking Accounts",
+      "rate_label": "APY",
+      "rate_header": "APY",
+      "required": true,
+      "sources": [
+        { "section": "high-yield checking$|high yield checking$", "include": ".", "title": "High-Yield Checking" },
+        { "section": "tier ii|tier 2", "include": ".", "title": "High-Yield Checking Tier II" },
+        { "section": "other accounts", "include": "checking", "exclude": "high.yield" }
+      ]
+    },
+
+    "money-market": {
+      "title": "Money Markets",
+      "rate_label": "APY",
+      "rate_header": "APY",
+      "required": true,
+      "sources": [
+        { "section": "other accounts", "include": "money market" }
+      ]
+    },
+
+    "certificates": {
+      "title": "Certificates / CDs",
+      "rate_label": "APY",
+      "rate_header": "APY",
+      "required": true,
+      "sources": [
+        { "section": "other accounts", "include": "certificate|month|\\bcd\\b|year", "exclude": "money market|savings|checking" }
+      ]
+    },
+
+    "credit-cards": {
+      "title": "Credit Cards",
+      "rate_label": "APR",
+      "rate_header": "APR",
+      "required": true,
+      "sources": [
+        { "section": "loans", "include": "visa|card" }
+      ]
+    },
+
+    "personal-loans": {
+      "title": "Personal Loans",
+      "rate_label": "APR",
+      "rate_header": "APR",
+      "detail_columns": "term",
+      "required": true,
+      "sources": [
+        { "section": "loans", "include": "signature|personal|share secured|certificate secured|line of credit", "exclude": "home equity|heloc" }
+      ]
+    },
+
+    "home-loans": {
+      "title": "Home Loans",
+      "rate_label": "APR",
+      "rate_header": "APR",
+      "detail_columns": "term",
+      "required": true,
+      "sources": [
+        { "section": "loans", "include": "heloc|home equity|mortgage" }
+      ]
+    },
+
+    "vehicle-loans": {
+      "title": "Vehicle Loans",
+      "rate_label": "APR",
+      "rate_header": "APR",
+      "detail_columns": "term",
+      "required": true,
+      "sources": [
+        { "section": "loans", "include": "auto|vehicle|car|truck|motorcycle|\\brv\\b|boat|recreational" }
+      ]
+    }
+  }
+}

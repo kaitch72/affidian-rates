@@ -1,0 +1,185 @@
+{
+  "source": "https://www.affidiancu.org/resources/tools/rates",
+  "effective_text": "Sample data: replaced on the first daily run",
+  "effective_date": "2026-03-01",
+  "checked_at": "2026-11-12T20:54:37+00:00",
+  "sample": true,
+  "categories": {
+    "savings": {
+      "title": "Savings Accounts",
+      "rate_label": "APY",
+      "note": "Minimum balance $100 to pay dividends.",
+      "rows": [
+        {
+          "name": "Regular Savings",
+          "detail": "",
+          "rate": "0.05%",
+          "rate_value": 0.05
+        },
+        {
+          "name": "Christmas Club Account",
+          "detail": "",
+          "rate": "0.05%",
+          "rate_value": 0.05
+        },
+        {
+          "name": "Business Savings",
+          "detail": "",
+          "rate": "0.05%",
+          "rate_value": 0.05
+        },
+        {
+          "name": "Small Business Savings",
+          "detail": "",
+          "rate": "0.05%",
+          "rate_value": 0.05
+        },
+        {
+          "name": "IRA Savings",
+          "detail": "",
+          "rate": "0.10%",
+          "rate_value": 0.1
+        }
+      ]
+    },
+    "checking": {
+      "title": "Checking Accounts",
+      "rate_label": "APY",
+      "note": "",
+      "rows": [
+        {
+          "name": "High-Yield Checking",
+          "detail": "Up to $15,000",
+          "rate": "4.00%",
+          "rate_value": 4.0
+        },
+        {
+          "name": "High-Yield Checking",
+          "detail": "Over $15,000",
+          "rate": "0.10%",
+          "rate_value": 0.1
+        },
+        {
+          "name": "High-Yield Checking Tier II",
+          "detail": "Up to $15,000",
+          "rate": "2.00%",
+          "rate_value": 2.0
+        },
+        {
+          "name": "Basic Checking",
+          "detail": "",
+          "rate": "0.01%",
+          "rate_value": 0.01
+        }
+      ]
+    },
+    "money-market": {
+      "title": "Money Markets",
+      "rate_label": "APY",
+      "note": "",
+      "rows": [
+        {
+          "name": "Money Market",
+          "detail": "",
+          "rate": "0.25%",
+          "rate_value": 0.25
+        }
+      ]
+    },
+    "certificates": {
+      "title": "Certificates / CDs",
+      "rate_label": "APY",
+      "note": "",
+      "rows": [
+        {
+          "name": "5 Month Certificate Special",
+          "detail": "",
+          "rate": "4.00%",
+          "rate_value": 4.0
+        },
+        {
+          "name": "12 Month Certificate",
+          "detail": "",
+          "rate": "3.00%",
+          "rate_value": 3.0
+        }
+      ]
+    },
+    "credit-cards": {
+      "title": "Credit Cards",
+      "rate_label": "APR",
+      "note": "",
+      "rows": [
+        {
+          "name": "Visa Platinum",
+          "detail": "",
+          "rate": "12.90%",
+          "rate_value": 12.9
+        },
+        {
+          "name": "Visa Rewards",
+          "detail": "",
+          "rate": "15.90%",
+          "rate_value": 15.9
+        }
+      ]
+    },
+    "personal-loans": {
+      "title": "Personal Loans",
+      "rate_label": "APR",
+      "note": "",
+      "rows": [
+        {
+          "name": "Signature Loan",
+          "detail": "up to 60 months",
+          "rate": "10.99%",
+          "rate_value": 10.99
+        }
+      ]
+    },
+    "home-loans": {
+      "title": "Home Loans",
+      "rate_label": "APR",
+      "note": "",
+      "rows": [
+        {
+          "name": "HELOC",
+          "detail": "10 year draw",
+          "rate": "7.25%",
+          "rate_value": 7.25
+        }
+      ]
+    },
+    "vehicle-loans": {
+      "title": "Vehicle Loans",
+      "rate_label": "APR",
+      "note": "",
+      "rows": [
+        {
+          "name": "New Auto",
+          "detail": "up to 60 months",
+          "rate": "5.49%",
+          "rate_value": 5.49
+        },
+        {
+          "name": "New Auto",
+          "detail": "61-72 months",
+          "rate": "5.99%",
+          "rate_value": 5.99
+        },
+        {
+          "name": "Motorcycle",
+          "detail": "up to 60 months",
+          "rate": "7.49%",
+          "rate_value": 7.49
+        },
+        {
+          "name": "RV",
+          "detail": "up to 120 months",
+          "rate": "7.99%",
+          "rate_value": 7.99
+        }
+      ]
+    }
+  }
+}

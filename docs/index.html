@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Affidian Rates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* If Affidian has a web license for ITC Avant Garde Gothic Pro, drop the
+     .woff2 files in docs/fonts/ with these names and they'll be used first. */
+  @font-face { font-family: "Affidian Avant Garde"; font-weight: 400; font-display: swap;
+    src: url("fonts/ITCAvantGardePro-Bk.woff2") format("woff2"); }
+  @font-face { font-family: "Affidian Avant Garde"; font-weight: 500; font-display: swap;
+    src: url("fonts/ITCAvantGardePro-Md.woff2") format("woff2"); }
+  @font-face { font-family: "Affidian Avant Garde"; font-weight: 700; font-display: swap;
+    src: url("fonts/ITCAvantGardePro-Bold.woff2") format("woff2"); }
+
+  :root {
+    --gold: #F4AF23;
+    --coffee: #332F21;
+    --siren: #3AA5D5;
+    --stripe: #EFEFED;
+    --white: #FFFFFF;
+    --muted: #5C5849;
+    --font: "Affidian Avant Garde", "ITC Avant Garde Gothic Pro", "Avant Garde",
+            "Poppins", "Century Gothic", "Segoe UI", Arial, sans-serif;
+    /* Everything scales with the width of the Web Browser asset.
+       At 990 px wide (the box in the 1080 px layout), 1rem = 16 px. */
+    --rate-col: 63%;
+  }
+  html { font-size: calc(100vw / 61.875); }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--white);
+    color: var(--coffee);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .layout { height: 100%; display: flex; flex-direction: column; }
+
+  .box {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--gold);
+    padding: 0 0.55rem 0.55rem;
+  }
+
+  .box-head {
+    position: relative;
+    height: 7.4rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+  }
+  .return {
+    position: absolute;
+    top: 1.9rem;
+    left: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.6rem 0.8rem;
+    color: var(--white);
+    font: 700 1.2rem/1 var(--font);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .return svg { width: 0.75rem; height: 1.1rem; }
+  .title {
+    margin: 0;
+    font-size: 3.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .panel {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+  }
+
+  .cols {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 5.4rem;
+    padding: 0 2.5rem;
+    background: var(--white);
+    box-shadow: 0 0.35rem 0.6rem -0.2rem rgba(51, 47, 33, 0.28);
+    font-size: 2.15rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .cols span:first-child, .row .name { flex: 0 0 var(--rate-col); }
+
+  .list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: auto;
+    scrollbar-color: #B8B6AE #EFEFED;
+  }
+  .list::-webkit-scrollbar { width: 0.9rem; }
+  .list::-webkit-scrollbar-track { background: #EFEFED; }
+  .list::-webkit-scrollbar-thumb { background: #B8B6AE; }
+
+  .row {
+    display: flex;
+    align-items: center;
+    min-height: 7.6rem;
+    padding: 1.2rem 2.5rem;
+  }
+  .row:nth-child(odd) { background: var(--stripe); }
+  .name { padding-right: 1.5rem; }
+  .name b {
+    display: block;
+    font-size: 1.95rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .name small {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.4rem;
+    line-height: 1.25;
+    color: var(--muted);
+  }
+  .rate {
+    font-size: 2.85rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .message {
+    padding: 4rem 2.5rem;
+    font-size: 1.9rem;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .foot {
+    padding: 1.6rem 2rem 0.4rem;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .foot p { margin: 0; }
+  .hide-footer .foot { display: none; }
+  .hide-return .return { display: none; }
+
+  .sample {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.5rem 0.9rem;
+    background: #F07666;
+    color: var(--white);
+    font: 700 1rem/1 var(--font);
+    border-radius: 0.3rem;
+  }
+
+  /* Setup page shown when no category is in the URL */
+  .setup { padding: 2rem; font-size: 1.3rem; line-height: 1.5; overflow: auto; height: 100%; user-select: text; }
+  .setup h1 { font-size: 2rem; margin: 0 0 1rem; }
+  .setup a { color: #27779A; }
+  .setup code { background: var(--stripe); padding: 0.1rem 0.4rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .list { scroll-behavior: smooth; }
+  }
+</style>
+</head>
+<body>
+<div class="layout" id="app" hidden>
+  <section class="box" aria-labelledby="title">
+    <header class="box-head">
+      <button class="return" id="return" type="button" aria-label="Return to all rates">
+        <svg viewBox="0 0 12 18" aria-hidden="true"><path d="M10 2 3 9l7 7" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+        Return
+      </button>
+      <h1 class="title" id="title"></h1>
+    </header>
+    <div class="panel">
+      <div class="cols" aria-hidden="true"><span>Type</span><span id="rate-label">APY</span></div>
+      <div class="list" id="list" role="list"></div>
+    </div>
+  </section>
+  <footer class="foot" id="foot"></footer>
+</div>
+<div class="setup" id="setup" hidden></div>
+<div class="sample" id="sample" hidden>Sample data</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DATA_URL = "rates.json";
+  var CACHE_KEY = "affidian-rates-cache";
+  var REFRESH_MINUTES = 30;   // re-check rates.json while the page is open
+  var IDLE_SECONDS = 45;      // scroll back to the top after this long untouched
+
+  var params = new URLSearchParams(location.search);
+  if (params.get("footer") === "0") document.body.classList.add("hide-footer");
+  if (params.get("return") === "0") document.body.classList.add("hide-return");
+
+  var feed = null;
+  var app = document.getElementById("app");
+  var setup = document.getElementById("setup");
+  var list = document.getElementById("list");
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function readCache() {
+    try { return JSON.parse(localStorage.getItem(CACHE_KEY)); } catch (e) { return null; }
+  }
+  function writeCache(data) {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (e) {}
+  }
+
+  function load() {
+    return fetch(DATA_URL + "?v=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) {
+        if (!data || !data.categories) throw new Error("Bad rates file");
+        writeCache(data);
+        return data;
+      })
+      .catch(function (err) {
+        console.warn("Using saved rates:", err);
+        return readCache();
+      });
+  }
+
+  function currentKey() {
+    return decodeURIComponent(location.hash.replace(/^#/, "")).trim().toLowerCase();
+  }
+
+  function renderSetup() {
+    app.hidden = true;
+    setup.hidden = false;
+    setup.textContent = "";
+    setup.appendChild(el("h1", null, "Affidian rates feed"));
+    setup.appendChild(el("p", null, "Add a category to the end of this page’s address to show its rates box. Tap one to preview it:"));
+    var ul = el("ul");
+    var cats = feed ? Object.keys(feed.categories) : [];
+    cats.forEach(function (k) {
+      var li = el("li");
+      var a = el("a", null, feed.categories[k].title);
+      a.href = "#" + k;
+      li.appendChild(a);
+      li.appendChild(document.createTextNode("  "));
+      li.appendChild(el("code", null, "#" + k));
+      ul.appendChild(li);
+    });
+    setup.appendChild(ul);
+    if (feed) {
+      setup.appendChild(el("p", null, (feed.effective_text || "") + ". Last checked " + new Date(feed.checked_at).toLocaleString() + "."));
+    }
+  }
+
+  function render() {
+    var key = currentKey();
+    document.getElementById("sample").hidden = !(feed && feed.sample);
+
+    if (!key) { renderSetup(); return; }
+
+    setup.hidden = true;
+    app.hidden = false;
+    list.textContent = "";
+    var foot = document.getElementById("foot");
+    foot.textContent = "";
+
+    var cat = feed && feed.categories[key];
+    if (!feed) {
+      document.getElementById("title").textContent = "Our Rates";
+      list.appendChild(el("p", "message", "Rates can’t be shown right now. Please ask a team member for current rates."));
+      return;
+    }
+    if (!cat) {
+      document.getElementById("title").textContent = "Our Rates";
+      list.appendChild(el("p", "message", "There’s no rate category called “" + key + "”. Check the address in Intuiface."));
+      return;
+    }
+
+    document.getElementById("title").textContent = cat.title;
+    document.getElementById("rate-label").textContent = cat.rate_label || "Rate";
+
+    if (!cat.rows.length) {
+      list.appendChild(el("p", "message", "Please ask a team member for current " + cat.title.toLowerCase() + " rates."));
+    }
+    cat.rows.forEach(function (r) {
+      var row = el("div", "row");
+      row.setAttribute("role", "listitem");
+      var name = el("div", "name");
+      name.appendChild(el("b", null, r.name));
+      if (r.detail) name.appendChild(el("small", null, r.detail));
+      row.appendChild(name);
+      row.appendChild(el("div", "rate", r.rate));
+      list.appendChild(row);
+    });
+
+    if (cat.note) foot.appendChild(el("p", null, cat.note));
+    if (feed.effective_text) foot.appendChild(el("p", null, feed.effective_text + "."));
+
+    list.scrollTop = 0;
+  }
+
+  // Return button: Intuiface should place a transparent button on top of it.
+  // If the page is opened in a normal browser, it goes back to the setup list.
+  document.getElementById("return").addEventListener("click", function () {
+    if (history.length > 1) history.back(); else location.hash = "";
+  });
+
+  // Scroll back to the top when nobody has touched the list for a while.
+  var idleTimer;
+  function poke() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function () { list.scrollTop = 0; }, IDLE_SECONDS * 1000);
+  }
+  ["scroll", "touchstart", "pointerdown", "wheel"].forEach(function (ev) {
+    list.addEventListener(ev, poke, { passive: true });
+  });
+
+  window.addEventListener("hashchange", render);
+
+  load().then(function (data) { feed = data; render(); });
+  setInterval(function () {
+    load().then(function (data) {
+      if (data && (!feed || data.checked_at !== feed.checked_at)) {
+        var top = list.scrollTop;
+        feed = data;
+        render();
+        list.scrollTop = top;
+      }
+    });
+  }, REFRESH_MINUTES * 60 * 1000);
+
+  // Keep a copy of the page and rates for when the player starts without internet.
+  if ("serviceWorker" in navigator) {
+    try { navigator.serviceWorker.register("sw.js").catch(function () {}); } catch (e) {}
+  }
+})();
+</script>
+</body>
+</html>
