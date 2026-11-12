@@ -32,7 +32,7 @@
   }
   html { font-size: calc(100vw / 61.875); }
   * { box-sizing: border-box; }
-    [hidden] { display: none !important; }
+  [hidden] { display: none !important; }
   html, body { height: 100%; margin: 0; }
   body {
     background: var(--white);
@@ -54,33 +54,17 @@
     flex-direction: column;
     background: var(--gold);
     padding: 0 0.55rem 0.55rem;
+    height: 100%;
   }
 
   .box-head {
-    position: relative;
     height: 7.4rem;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 1.5rem;
-  }
-  .return {
-    position: absolute;
-    top: 1.9rem;
-    left: 0.9rem;
-    display: flex;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0.6rem 0.8rem;
-    color: var(--white);
-    font: 700 1.2rem/1 var(--font);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    background: none;
-    border: 0;
-    cursor: pointer;
+    justify-content: center;
+    padding: 0 2rem;
+    text-align: center;
   }
-  .return svg { width: 0.75rem; height: 1.1rem; }
   .title {
     margin: 0;
     font-size: 3.05rem;
@@ -162,16 +146,6 @@
     text-align: center;
   }
 
-  .foot {
-    padding: 1.6rem 2rem 0.4rem;
-    font-size: 1.05rem;
-    font-style: italic;
-    line-height: 1.4;
-    text-align: center;
-  }
-  .foot p { margin: 0; }
-  .hide-footer .foot { display: none; }
-  .hide-return .return { display: none; }
 
   .sample {
     position: fixed;
@@ -184,11 +158,6 @@
     border-radius: 0.3rem;
   }
 
-  /* Setup page shown when no category is in the URL */
-  .setup { padding: 2rem; font-size: 1.3rem; line-height: 1.5; overflow: auto; height: 100%; user-select: text; }
-  .setup h1 { font-size: 2rem; margin: 0 0 1rem; }
-  .setup a { color: #27779A; }
-  .setup code { background: var(--stripe); padding: 0.1rem 0.4rem; }
 
   @media (prefers-reduced-motion: no-preference) {
     .list { scroll-behavior: smooth; }
@@ -199,10 +168,6 @@
 <div class="layout" id="app" hidden>
   <section class="box" aria-labelledby="title">
     <header class="box-head">
-      <button class="return" id="return" type="button" aria-label="Return to all rates">
-        <svg viewBox="0 0 12 18" aria-hidden="true"><path d="M10 2 3 9l7 7" fill="none" stroke="currentColor" stroke-width="3"/></svg>
-        Return
-      </button>
       <h1 class="title" id="title"></h1>
     </header>
     <div class="panel">
@@ -210,9 +175,7 @@
       <div class="list" id="list" role="list"></div>
     </div>
   </section>
-  <footer class="foot" id="foot"></footer>
 </div>
-<div class="setup" id="setup" hidden></div>
 <div class="sample" id="sample" hidden>Sample data</div>
 
 <script>
@@ -221,17 +184,14 @@
 
   var DATA_URL = "rates.json";
   var CACHE_KEY = "affidian-rates-cache";
-  var REFRESH_MINUTES = 30;   // re-check rates.json while the page is open
-  var IDLE_SECONDS = 45;      // scroll back to the top after this long untouched
-
-  var params = new URLSearchParams(location.search);
-  if (params.get("footer") === "0") document.body.classList.add("hide-footer");
-  if (params.get("return") === "0") document.body.classList.add("hide-return");
+  var DEFAULT_CATEGORY = "savings"; // shown if the address has no #category
+  var REFRESH_MINUTES = 30;         // re-check rates.json while the page is open
+  var IDLE_SECONDS = 45;            // scroll back to the top after this long untouched
 
   var feed = null;
   var app = document.getElementById("app");
-  var setup = document.getElementById("setup");
   var list = document.getElementById("list");
+  var titleEl = document.getElementById("title");
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -262,57 +222,33 @@
   }
 
   function currentKey() {
-    return decodeURIComponent(location.hash.replace(/^#/, "")).trim().toLowerCase();
+    var key = decodeURIComponent(location.hash.replace(/^#/, "")).trim().toLowerCase();
+    return key || DEFAULT_CATEGORY;
   }
 
-  function renderSetup() {
-    app.hidden = true;
-    setup.hidden = false;
-    setup.textContent = "";
-    setup.appendChild(el("h1", null, "Affidian rates feed"));
-    setup.appendChild(el("p", null, "Add a category to the end of this page’s address to show its rates box. Tap one to preview it:"));
-    var ul = el("ul");
-    var cats = feed ? Object.keys(feed.categories) : [];
-    cats.forEach(function (k) {
-      var li = el("li");
-      var a = el("a", null, feed.categories[k].title);
-      a.href = "#" + k;
-      li.appendChild(a);
-      li.appendChild(document.createTextNode("  "));
-      li.appendChild(el("code", null, "#" + k));
-      ul.appendChild(li);
-    });
-    setup.appendChild(ul);
-    if (feed) {
-      setup.appendChild(el("p", null, (feed.effective_text || "") + ". Last checked " + new Date(feed.checked_at).toLocaleString() + "."));
-    }
+  function message(title, text) {
+    titleEl.textContent = title;
+    list.appendChild(el("p", "message", text));
   }
 
   function render() {
-    var key = currentKey();
-    document.getElementById("sample").hidden = !(feed && feed.sample);
-
-    if (!key) { renderSetup(); return; }
-
-    setup.hidden = true;
     app.hidden = false;
     list.textContent = "";
-    var foot = document.getElementById("foot");
-    foot.textContent = "";
+    document.getElementById("sample").hidden = !(feed && feed.sample);
 
-    var cat = feed && feed.categories[key];
+    var key = currentKey();
     if (!feed) {
-      document.getElementById("title").textContent = "Our Rates";
-      list.appendChild(el("p", "message", "Rates can’t be shown right now. Please ask a team member for current rates."));
+      message("Our Rates", "Rates can’t be shown right now. Please ask a team member for current rates.");
       return;
     }
+    var cat = feed.categories[key];
     if (!cat) {
-      document.getElementById("title").textContent = "Our Rates";
-      list.appendChild(el("p", "message", "There’s no rate category called “" + key + "”. Check the address in Intuiface."));
+      message("Our Rates", "Please ask a team member for current rates.");
+      console.warn("Unknown rate category: " + key);
       return;
     }
 
-    document.getElementById("title").textContent = cat.title;
+    titleEl.textContent = cat.title;
     document.getElementById("rate-label").textContent = cat.rate_label || "Rate";
 
     if (!cat.rows.length) {
@@ -329,17 +265,8 @@
       list.appendChild(row);
     });
 
-    if (cat.note) foot.appendChild(el("p", null, cat.note));
-    if (feed.effective_text) foot.appendChild(el("p", null, feed.effective_text + "."));
-
     list.scrollTop = 0;
   }
-
-  // Return button: Intuiface should place a transparent button on top of it.
-  // If the page is opened in a normal browser, it goes back to the setup list.
-  document.getElementById("return").addEventListener("click", function () {
-    if (history.length > 1) history.back(); else location.hash = "";
-  });
 
   // Scroll back to the top when nobody has touched the list for a while.
   var idleTimer;
