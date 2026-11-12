@@ -2,7 +2,7 @@
   "source": "https://www.affidiancu.org/resources/tools/rates",
   "effective_text": "Rates effective as of March 1, 2026",
   "effective_date": "2026-03-01",
-  "checked_at": "2026-11-12T21:07:35+00:00",
+  "checked_at": "2026-11-12T21:38:36+00:00",
   "sample": false,
   "categories": {
     "savings": {
@@ -226,16 +226,10 @@
           "rate_value": 11.25
         },
         {
-          "name": "Visa Signature Card",
+          "name": "Student Loans",
           "detail": "",
-          "rate": "9%",
-          "rate_value": 9.0
-        },
-        {
-          "name": "Visa Quantum Signature",
-          "detail": "",
-          "rate": "8%",
-          "rate_value": 8.0
+          "rate": "Ask us",
+          "rate_value": null
         }
       ]
     },
@@ -298,18 +292,6 @@
           "detail": "",
           "rate": "6.25%",
           "rate_value": 6.25
-        },
-        {
-          "name": "Classic Visa Card",
-          "detail": "",
-          "rate": "18.00%",
-          "rate_value": 18.0
-        },
-        {
-          "name": "Visa Signature Card",
-          "detail": "",
-          "rate": "9%",
-          "rate_value": 9.0
         }
       ]
     }
